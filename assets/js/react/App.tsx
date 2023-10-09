@@ -14,7 +14,6 @@ const App: React.FC<AppProps> = (props: AppProps) => {
     <div className="title">
       <Title
         title="What do you have to do today?"
-        subtitle="Phoenix + Typescript + React"
       />
       <TaskForm setTasks={setTasks} />
       <TaskList tasks={tasks} setTasks={setTasks} />
