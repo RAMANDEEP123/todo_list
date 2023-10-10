@@ -5,7 +5,7 @@ defmodule ReactTodoList.Todo.Goal do
     schema "goal" do
       field :title, :string
       field :description, :string
-      field :goal_id, :uuid
+      field :goal_id, :string
       field :progress, :integer
   
       timestamps()
