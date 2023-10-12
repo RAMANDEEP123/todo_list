@@ -38,8 +38,8 @@ export  function TaskList({tasks, setTasks, goalId}) {
 
     return (
     <>
-        {tasks?.data?.length > 0 ? (
-            tasks.data.map((task) => <TaskItem completeItem={completeItem} key={task.id} {...task} />)
+        {tasks?.length > 0 ? (
+            tasks.map((task) => <TaskItem completeItem={completeItem} key={task.id} {...task} />)
         ) : (
         <div className="task-list-container">
             <h3>Tasks are loading ...</h3>
