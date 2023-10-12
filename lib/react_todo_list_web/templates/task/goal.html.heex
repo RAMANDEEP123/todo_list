@@ -1,0 +1,22 @@
+<h1>Listing Goals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for goal <- @goals do %>
+    <tr>
+      <td><%= goal.title %></td>
+      <td><%= goal.description %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Goal", to: Routes.task_path(@conn, :new) %></span>

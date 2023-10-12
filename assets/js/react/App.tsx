@@ -1,22 +1,60 @@
 import { Title } from "./components/Title";
 import React from "react";
-import { TaskForm } from './components/TaskForm';
-import { TaskList } from './components/TaskList';
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { GoalList } from "./components/GoalList";
+import { GoalForm } from "./components/GoalForm";
 
 interface AppProps {
   name: string;
 }
 const App: React.FC<AppProps> = (props: AppProps) => {  
-  const [tasks, setTasks] = useState({});
+  const [goals, setGoals] = useState({});
+  const [showManageGoals, setShowManageGoals] = useState(false);
+  const [showAddGoals, setShowAddGoals] = useState(false);
+
+  const showManageGoalsView = () => async () => {
+     setShowManageGoals(true);
+  }
+
+  const showAddGoalView = () => async () => {
+    setShowAddGoals(true);
+ }
+  
+  const rendeShowManageGoalsView = () => {
+    if (showManageGoals) {
+      return (<div>
+        <h3> Your Goals </h3>
+        <GoalList goals={goals} setGoals={setGoals}/>
+        </div>
+      )
+    }
+  }
+
+  const rendeShowAddGoalsView = () => {
+    if (showAddGoals) {
+      return (<div>
+        <GoalForm setGoals={setGoals} />
+        </div>
+      )
+    }
+  } 
 
   return (
     <div className="title">
-      <Title
-        title="What do you have to do today?"
-      />
-      <TaskForm setTasks={setTasks} />
-      <TaskList tasks={tasks} setTasks={setTasks} />
+      <button
+            className="AddGoal"
+            onClick={showAddGoalView()}
+          >
+            Add a Goal
+      </button>
+      <button
+            className="ManageGoal"
+            onClick={showManageGoalsView()}
+          >
+            Manage Goals
+      </button>
+      {rendeShowManageGoalsView()}
+      {rendeShowAddGoalsView()}
     </div>
   );
 }

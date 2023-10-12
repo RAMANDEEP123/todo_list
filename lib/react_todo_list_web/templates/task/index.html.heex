@@ -5,6 +5,7 @@
     <tr>
       <th>Description</th>
       <th>Completed</th>
+      <th>Goal ID</th>
 
       <th></th>
     </tr>
@@ -14,6 +15,7 @@
     <tr>
       <td><%= task.description %></td>
       <td><%= task.completed %></td>
+      <td><%= task.goal_id %></td>
 
       <td>
         <span><%= link "Show", to: Routes.task_path(@conn, :show, task) %></span>

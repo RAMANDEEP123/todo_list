@@ -13,15 +13,54 @@
 
 alias ReactTodoList.Repo
 alias ReactTodoList.Todo.Task
+alias ReactTodoList.Todo.User
+alias ReactTodoList.Todo.Goal
+
+Repo.insert!(%User{
+  id: 1,
+  name: "Krutarth",
+  email: "k.patel@gmail.com"
+})
+
+Repo.insert!(%Goal{
+  id: 1,
+  title: "Learn AWS",
+  description: "Preparing for aws cloud practitioner certification.",
+  user_id: "1"
+})
 
 Repo.insert!(%Task{
   id: 1,
-  description: "Learn Elixir",
-  completed: false
+  description: "Review AWS Documentation",
+  completed: false,
+  progress: "0",
+  goal_id: "1"
 })
 
 Repo.insert!(%Task{
   id: 2,
-  description: "Build a Todo App",
-  completed: false
+  description: "Online Training Courses",
+  progress: "0",
+  goal_id: "1"
+})
+
+Repo.insert!(%Task{
+  id: 3,
+  description: "Books",
+  progress: "0",
+  goal_id: "1"
+})
+
+Repo.insert!(%Task{
+  id: 4,
+  description: "Hands-On Experience",
+  progress: "0",
+  goal_id: "1"
+})
+
+Repo.insert!(%Task{
+  id: 5,
+  description: "Practice Exams",
+  progress: "0",
+  goal_id: "1"
 })

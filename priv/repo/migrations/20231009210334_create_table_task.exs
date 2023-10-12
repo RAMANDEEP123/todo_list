@@ -5,7 +5,7 @@ defmodule ReactTodoList.Repo.Migrations.CreateTableTask do
     create table(:task) do
       add :sequence, :integer
       add :description, :text
-      add :goal_id, :uuid
+      add :goal_id, :text
       add :progress, :integer
 
       timestamps()

@@ -2,17 +2,17 @@ import React from "react";
 
 interface TaskItemInteface {
     id: number;
+    goal_id: string
     description: string;
     completed: boolean;
-    deleteItem: (id: number) => void;
     completeItem: (id: number) => void;
   }
   
-export function TaskItem({ id, description, completed, deleteItem, completeItem}: TaskItemInteface) {
+export function TaskItem({ id, description, completed, completeItem}: TaskItemInteface) {
 
-    const handleDelete = async (id) => {
-        deleteItem(id)
-    }
+    // const handleDelete = async (id) => {
+    //     deleteItem(id)
+    // }
 
     const handleComplete = async (id) => {
         completeItem(id)
@@ -27,9 +27,9 @@ export function TaskItem({ id, description, completed, deleteItem, completeItem}
                 <button onClick={() => handleComplete(id)} className="button">
                     Complete
                 </button>
-                <button onClick={() => handleDelete(id)} className="button">
+                {/* <button onClick={() => handleDelete(id)} className="button">
                     Remove
-                </button>
+                </button> */}
             </div>
         </div>
     );

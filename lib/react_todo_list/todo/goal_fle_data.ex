@@ -14,6 +14,7 @@ defmodule ReactTodoList.Todo.GoalFileData do
     def changeset(task, attrs) do
       task
       |> cast(attrs, [:name, :path, :mime_type])
+      |> unique_constraint(:id, name: :PRIMARY)
     end
   end
   

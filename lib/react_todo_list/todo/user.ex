@@ -14,6 +14,7 @@ defmodule ReactTodoList.Todo.User do
     def changeset(task, attrs) do
       task
       |> cast(attrs, [:name, :email, :password])
+      |> unique_constraint(:id, name: :PRIMARY)
     end
   end
   

@@ -9,12 +9,26 @@ defmodule ReactTodoListWeb.TaskController do
     render(conn, "index.html", tasks: tasks)
   end
 
+  def get_tasks(conn, %{"goal_id" => goal_id}) do
+    tasks = Todo.list_tasks(goal_id)
+    render(conn, "tasks.html", tasks: tasks)
+  end
+  
+  def get_goals(conn, _params) do
+    IO.puts("*********************************8")
+    goals = Todo.list_goals()
+    IO.inspect goals
+    render(conn, "index.html", goals: goals)
+  end
+
   def new(conn, _params) do
     changeset = Todo.change_task(%Task{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"task" => task_params}) do
+    IO.puts("task created successully")
+    IO.inspect task_params
     case Todo.create_task(task_params) do
       {:ok, task} ->
         conn

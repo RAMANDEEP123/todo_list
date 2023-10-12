@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
 
-export function TaskForm({setTasks}) {
+export function TaskForm({setTasks, goalId}) {
     const [input, setInput] = useState(typeof string);
+    
+    console.log('Goal id primted');
+    console.log(goalId);
 
     const addItem = async (description: string) => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({task: {description: description, completed: false}})
+            body: JSON.stringify({task: {description: description, completed: false, goal_id: goalId.toString()}})
         };
 
         const responseCreate = await fetch(
@@ -23,7 +26,7 @@ export function TaskForm({setTasks}) {
 
         setTasks(responseJson);
     }
-
+    
     return (
     <>
         <div className="task-form-container">
@@ -32,7 +35,7 @@ export function TaskForm({setTasks}) {
                 Add new Task
             </button>
         </div>
-        <hr className="my-12" />
+        <hr className="my-13" />
     </>
     );
 }

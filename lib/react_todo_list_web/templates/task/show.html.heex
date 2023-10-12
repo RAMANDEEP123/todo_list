@@ -12,6 +12,12 @@
     <%= @task.completed %>
   </li>
 
+  
+  <li>
+    <strong>Goal ID:</strong>
+    <%= @task.goal_id %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span> |

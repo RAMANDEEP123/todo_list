@@ -5,8 +5,7 @@ defmodule ReactTodoList.Todo.Goal do
     schema "goal" do
       field :title, :string
       field :description, :string
-      field :goal_id, :string
-      field :progress, :integer
+      field :user_id, :string
   
       timestamps()
     end
@@ -14,7 +13,8 @@ defmodule ReactTodoList.Todo.Goal do
     @doc false
     def changeset(task, attrs) do
       task
-      |> cast(attrs, [:title, :description, :goal_id, :progress])
+      |> cast(attrs, [:title, :description, :user_id])
+      # |> unique_constraint(:id, name: :PRIMARY)
     end
   end
   

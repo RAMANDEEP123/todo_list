@@ -2,32 +2,19 @@ import { TaskItem } from "./TaskItem";
 import React from "react";
 import { useState, useEffect } from "react";
 
-export  function TaskList({tasks, setTasks}) {
+export  function TaskList({tasks, setTasks, goalId}) {
 
     useEffect(() => {
       const getTaskList = async () => {
         const response = await fetch(
-          "http://localhost:4000/api/tasks"
+          `http://localhost:4000/api/goal/tasks/${goalId.toString()}`
         );
         const responseJson = await response.json();
+        console.log(responseJson);
         setTasks(responseJson);
       };
       getTaskList();
     }, []);
-
-    const deleteItem = async (id: number) => {
-        const responseDelete = await fetch(
-            `http://localhost:4000/api/tasks/${id}`,
-            {
-            method: "DELETE",
-            }
-        );
-        const response = await fetch(
-            "http://localhost:4000/api/tasks"
-          );
-        const responseJson = await response.json();
-        setTasks(responseJson);
-    }
 
     const completeItem = async (id: number, description: string) => {
 
@@ -52,10 +39,10 @@ export  function TaskList({tasks, setTasks}) {
     return (
     <>
         {tasks?.data?.length > 0 ? (
-            tasks.data.map((task) =>  <TaskItem deleteItem={deleteItem} completeItem={completeItem} key={task.id} {...task} />)
+            tasks.data.map((task) => <TaskItem completeItem={completeItem} key={task.id} {...task} />)
         ) : (
         <div className="task-list-container">
-            <h3>You don't have any tasks anymore :(</h3>
+            <h3>Tasks are loading ...</h3>
         </div>
         )}
     </>

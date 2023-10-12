@@ -14,20 +14,35 @@ defmodule ReactTodoListWeb.Router do
     plug :accepts, ["json"]
   end
 
-
-  # Other scopes may use custom stacks.
   scope "/api", ReactTodoListWeb.Api, as: :api do
     pipe_through :api
 
+    get "/goals", TaskController, :get_goals
+    post "/goals/create", TaskController, :create_goal
+    get "/goal/tasks/:goal_id", TaskController, :get_tasks
     resources "/tasks", TaskController
   end
 
   scope "/", ReactTodoListWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :get_goals
+    get "/goal/tasks/:goal_id", TaskController, :index
     resources "/tasks", TaskController
   end
+  # Other scopes may use custom stacks.
+  # scope "/api", ReactTodoListWeb.Api, as: :api do
+  #   pipe_through :api
+
+  #   resources "/tasks", TaskController
+  # end
+
+  # scope "/", ReactTodoListWeb do
+  #   pipe_through :browser
+
+  #   get "/", PageController, :index
+  #   resources "/tasks", TaskController
+  # end
 
 
 

@@ -5,7 +5,7 @@ defmodule ReactTodoList.Repo.Migrations.CreateTableGoal do
     create table(:goal) do
       add :title, :text, null: false
       add :description, :text
-      add :user_id, :uuid
+      add :user_id, :text
 
       timestamps()
     end
