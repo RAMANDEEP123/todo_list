@@ -12,7 +12,7 @@ config :react_todo_list,
 
 # Configures the endpoint
 config :react_todo_list, ReactTodoListWeb.Endpoint,
-  url: [host: "54.198.43.247"],
+  url: [host: "localhost"],
   render_errors: [view: ReactTodoListWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: ReactTodoList.PubSub,
   live_view: [signing_salt: "fmHcqYJi"]
