@@ -14,7 +14,7 @@ defmodule ReactTodoList.Todo.Goal do
     def changeset(task, attrs) do
       task
       |> cast(attrs, [:title, :description, :user_id])
-      |> unique_constraint(:id, name: :PRIMARY)
+      # |> unique_constraint(:id, name: :PRIMARY)
     end
   end
   

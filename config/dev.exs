@@ -4,12 +4,15 @@ import Config
 config :react_todo_list, ReactTodoList.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
+  hostname: "rds-instance2.cdsf9qdmrb7v.us-east-1.rds.amazonaws.com",
   port: 5432,
   database: "react_todo_list_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 20,
+  ssl: true,
+  queue_target: 10000, 
+  queue_interval: 1000
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
