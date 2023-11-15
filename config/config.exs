@@ -17,7 +17,7 @@ config :react_todo_list, ReactTodoListWeb.Endpoint,
   pubsub_server: ReactTodoList.PubSub,
   live_view: [signing_salt: "fmHcqYJi"],
   http: [
-    port: System.get_env("PORT") || 4000,
+    port: 4000,
     protocol_options: [
       max_keepalive: 100_000
     ]],
