@@ -44,13 +44,19 @@ defmodule ReactTodoList.Todo do
 
   """
   def get_task!(id), do: Repo.get!(Task, id)
+  
+  def find_max_task_id() do
+    query = from(q in Task, order_by: [desc: q.id], limit: 1)
+    Repo.all(query)
+ end
 
   @doc """
   Creates a task.
   """
   def create_task(attrs \\ %{}) do
+    max_id = find_max_task_id()
     %Task{}
-    |> Task.changeset(attrs)
+    |> Task.changeset(%{id: max_id+1, description: attrs.description, completed: attrs.completed, goal_id: attrs.goal_id})
     |> Repo.insert()
   end
 

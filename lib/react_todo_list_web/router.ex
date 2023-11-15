@@ -12,6 +12,11 @@ defmodule ReactTodoListWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CORSPlug,
+      origins: ["http://localhost:4000"],
+      methods: ~w(GET POST PUT PATCH DELETE OPTIONS),
+      headers: ~w(Accept Authorization Content-Type),
+      max_age: 600
   end
 
   scope "/api", ReactTodoListWeb.Api, as: :api do

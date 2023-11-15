@@ -14,7 +14,8 @@ defmodule ReactTodoList.Todo.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:id, :description, :completed, :progress, :goal_id])
+    |> cast(attrs, [:description, :completed, :progress, :goal_id])
+    |> validate_required([:description])
     # |> unique_constraint(:id, name: :task_pkey)
   end
 end

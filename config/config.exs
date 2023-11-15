@@ -15,7 +15,14 @@ config :react_todo_list, ReactTodoListWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: ReactTodoListWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: ReactTodoList.PubSub,
-  live_view: [signing_salt: "fmHcqYJi"]
+  live_view: [signing_salt: "fmHcqYJi"],
+  http: [
+    port: System.get_env("PORT") || 4000,
+    protocol_options: [
+      max_keepalive: 100_000
+    ]],
+  cors: true
+
 
 # Configures the mailer
 #
@@ -38,6 +45,15 @@ config :esbuild,
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
+
+# config :httpotion,
+#   follow_redirect: true,
+#   pool_timeout: 30_000,
+#   recv_timeout: 8_000,
+#   ssl: [
+#     {:versions, [:"tlsv1.2"]},
+#     {:cacertfile, "/path/to/ca-bundle.crt"}
+#   ]
 
 # Configures Elixir's Logger
 config :logger, :console,

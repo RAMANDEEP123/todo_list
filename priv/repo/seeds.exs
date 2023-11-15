@@ -17,13 +17,13 @@ alias ReactTodoList.Todo.User
 alias ReactTodoList.Todo.Goal
 
 Repo.insert!(%User{
-  id: 1,
+  # id: 1,
   name: "Krutarth",
   email: "k.patel@gmail.com"
 })
 
 Repo.insert!(%Goal{
-  id: 1,
+  # id: 1,
   title: "Learn AWS",
   description: "Preparing for aws cloud practitioner certification.",
   user_id: "1"

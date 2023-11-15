@@ -3,10 +3,12 @@ defmodule ReactTodoList.Repo.Migrations.CreateTasks do
 
   def change do
     create table(:tasks) do
-      add :description, :text
-      add :completed, :boolean, default: false, null: false
+      # add :id, :integer, primary_key: true, autogenerate: true
+      add :completed, :boolean, default: false
+      add :description, :string
 
       timestamps()
     end
+    
   end
 end
