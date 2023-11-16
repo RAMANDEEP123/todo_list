@@ -7,8 +7,16 @@ export  function GoalList({goals, setGoals}) {
     useEffect(() => {
       const getGoalsList = async () => {
         const response = await fetch(
-          "http://localhost:4000/api/goals"
-        );
+          "http://localhost:4000/api/goals", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            },
+          }
+        )
+        // .then((response) => response.json())
+        // .then((data) => console.log(data))
+        .catch((error) => console.error("Error:", error));
         const responseJson = await response.json();
         console.log(responseJson);
         console.log(goals?.data?.length);
