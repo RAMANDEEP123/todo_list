@@ -10,9 +10,19 @@ phases:
 
     commands:
       - sudo apt-get update
+      - sudo apt-get install -y git
+      - sudo apt-get install -y build-essential git wget libssl-dev libreadline-dev libncurses5-dev zlib1g-dev m4 curl wx-common libwxgtk3.0-dev autoconf
+      - wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && dpkg -i erlang-solutions_1.0_all.deb
+      - sudo apt-get update
       - sudo apt-get install -y esl-erlang
       - sudo apt-get install -y elixir
-      
+      - mkdir ~/node-latest-install && cd $_ && \
+      - curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
+      - sudo apt-get install -y nodejs
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;
+      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;
+      - sudo apt-get update && apt-get install -y yarn;
+
       - cd backend
       - mix local.hex --force
       - mix local.rebar --force
