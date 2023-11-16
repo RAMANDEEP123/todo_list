@@ -2,6 +2,7 @@ import React from "react";
 import { TaskList } from './TaskList';
 import { TaskForm } from './TaskForm';
 import { useState, useEffect } from "react";
+import FileUpload from './FileUpload';
 
 interface GoalItemInteface {
     id: number;
@@ -34,9 +35,10 @@ export function GoalItem({ id, title, description}: GoalItemInteface) {
             <div className="goalDesc">Description: {description}</div>
             <div><button  className="button1" onClick={showAddTasksView()}> 
                     Add Task
-            </button><button  className="button1">
-                    Upload Documents
-            </button></div>
+            </button><div>
+              <h1>File Upload to S3 Example</h1>
+              <FileUpload />
+            </div></div>
             <div className="tasks">
                 <TaskList tasks={tasks} setTasks={setTasks} goalId={id}/>
             </div>
