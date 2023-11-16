@@ -4,7 +4,8 @@ import Config
 config :react_todo_list, ReactTodoList.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "rds-instance2.cdsf9qdmrb7v.us-east-1.rds.amazonaws.com",
+  hostname: "localhost",
+  # hostname: "rds-instance2.cdsf9qdmrb7v.us-east-1.rds.amazonaws.com",
   port: 5432,
   database: "react_todo_list_dev",
   stacktrace: true,
@@ -32,7 +33,7 @@ config :react_todo_list, ReactTodoListWeb.Endpoint,
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]
-  
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
