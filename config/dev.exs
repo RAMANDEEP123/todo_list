@@ -31,17 +31,8 @@ config :react_todo_list, ReactTodoListWeb.Endpoint,
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
-  ],
-  https: [
-    port: 4040,
-    cipher_suite: :strong,
-    otp_app: :react_todo_list,
-    keyfile: System.get_env("SSL_KEY_PATH") || "path/to/keyfile.pem",
-    certfile: System.get_env("SSL_CERT_PATH") || "path/to/certfile.pem",
-    cacertfile: "path/to/cacertfile.pem",
-    verify: :verify_peer
   ]
-
+  
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
