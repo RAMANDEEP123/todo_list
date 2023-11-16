@@ -1,0 +1,52 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14  # Adjust the version as needed
+      elixir: 1.12
+      postgresql: 12  # Adjust the version as needed
+      erlang: 24.0   # Adjust the version as needed
+
+    commands:
+      - cd backend
+      - mix local.hex --force
+      - mix local.rebar --force
+
+      # Install dependencies for Phoenix (including PostgreSQL)
+      - mix deps.get
+      - mix compile
+
+      # Install Node.js dependencies for React
+      - cd assets/js/react
+      - npm install
+
+  pre_build:
+    commands:
+      # Set up the database (you might need to adjust this based on your needs)
+      - cd ../..
+      - mix ecto.create
+      - mix ecto.migrate
+
+  build:
+    commands:
+      # Build React
+      - cd assets/js/react
+      - npm run build
+
+      # Build Phoenix
+      - cd ../../backend
+      - mix phx.digest
+
+artifacts:
+  files:
+    - 'assets/js/react/build/**/*'
+    - '_build/prod/rel/*/**/*'
+    - 'config/prod.secret.exs'
+    - 'priv/repo/migrations/**/*'
+
+cache:
+  paths:
+    - 'assets/js/react/node_modules'
+    - 'deps'
+    - '_build'
