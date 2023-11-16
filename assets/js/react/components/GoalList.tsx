@@ -13,10 +13,10 @@ export  function GoalList({goals, setGoals}) {
               "Content-Type": "application/json"
             },
           }
-        )
-        // .then((response) => response.json())
-        // .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error));
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const responseJson = await response.json();
         console.log(responseJson);
         console.log(goals?.data?.length);

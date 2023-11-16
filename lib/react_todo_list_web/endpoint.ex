@@ -16,7 +16,14 @@ defmodule ReactTodoListWeb.Endpoint do
     origins: "*",
     methods: ~w(GET POST PUT PATCH DELETE OPTIONS),
     headers: ~w(Accept Authorization Content-Type),
-    max_age: 600 
+    max_age: 600,
+    credentials: true,
+    headers: [
+      "Authorization",
+      "Content-Type",
+      "Accept",
+      "X-Requested-With"
+    ]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
