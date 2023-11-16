@@ -14,12 +14,12 @@ export function GoalForm({setGoals}) {
         };
 
         const responseCreate = await fetch(
-            `http://localhost:4000/api/goals/create`,
+            `http://54.198.43.247:4000/api/goals/create`,
             requestOptions
         );
 
         const response = await fetch(
-            "http://localhost:4000/api/goals"
+            "http://54.198.43.247:4000/api/goals"
             );
         const responseJson = await response.json();
 
