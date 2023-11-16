@@ -16,6 +16,7 @@ export  function GoalList({goals, setGoals}) {
           }
         );
         if (!response.ok) {
+          console.log(`HTTP error! Status: ${response.status}`);
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const responseJson = await response.json();
