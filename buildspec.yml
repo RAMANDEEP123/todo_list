@@ -16,9 +16,9 @@ phases:
       - echo "Saving Docker image locally..."
       - docker save -o goal_tracker_final_project_img.tar goal_tracker_final_project_img
       - echo "Copying Docker image to EC2 instance..."
-      - scp -i goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ubuntu@3.81.67.114:~/
+      - scp -i ./goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ubuntu@3.81.67.114:~/
       - echo "Connecting to EC2 instance and loading Docker image..."
-      - ssh -i goal-tracker-instance2-key.pem ubuntu@3.81.67.114 "docker load -i goal_tracker_final_project_img.tar"
+      - ssh -i ./goal-tracker-instance2-key.pem ubuntu@3.81.67.114 "docker load -i goal_tracker_final_project_img.tar"
 
 artifacts:
   files: imagedefinitions.json
