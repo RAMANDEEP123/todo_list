@@ -1,7 +1,26 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - apt-get update
+      - apt-get install -y nodejs npm
+      - echo "Copying key.pem to EC2 instance..."
+      - scp -i $(pwd)/goal-tracker-instance2-key.pem  ./goal-tracker-instance2-key.pem ec2-user@172.31.42.242:~/
+
   build:
     commands:
-      # Run Docker container on EC2
-      - docker run -d -p 4000:4000 -v /var/lib/docker/overlay2/6506d49a74b2d71c63bb3cc25df21ab1678442a5655d227d85fbdbbb7fd22c4e/merged:/app goal_tracker_project_image:latest
+      - echo "Building Docker image..."
+      - docker build -t goal_tracker_final_project_img .
+
+  post_build:
+    commands:
+      - echo "Saving Docker image locally..."
+      - docker save -o goal_tracker_final_project_img.tar goal_tracker_final_project_img
+      - echo "Copying Docker image to EC2 instance..."
+      - scp -i $(pwd)/goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ec2-user@172.31.42.242:~/
+      - echo "Connecting to EC2 instance and loading Docker image..."
+      - ssh -i $(pwd)/goal-tracker-instance2-key.pem ec2-user@172.31.42.242 "docker load -i goal_tracker_final_project_img.tar"
+
+artifacts:
+  files: imagedefinitions.json
