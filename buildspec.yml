@@ -5,22 +5,20 @@ phases:
     commands:
       - apt-get update
       - apt-get install -y nodejs npm
-      - echo "Copying key.pem to EC2 instance..."
-      - scp -i C:/Users/Raman/goal_tracker_final_project/goal-tracker-instance2-key.pem/goal-tracker-instance2-key.pem  ./goal-tracker-instance2-key.pem ec2-user@172.31.42.242:~/
 
   build:
     commands:
       - echo "Building Docker image..."
       - docker build -t goal_tracker_final_project_img .
 
-  post_build:
-    commands:
-      - echo "Saving Docker image locally..."
-      - docker save -o goal_tracker_final_project_img.tar goal_tracker_final_project_img
-      - echo "Copying Docker image to EC2 instance..."
-      - scp -i C:/Users/Raman/goal_tracker_final_project/goal-tracker-instance2-key.pem/goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ec2-user@172.31.42.242:~/
-      - echo "Connecting to EC2 instance and loading Docker image..."
-      - ssh -i C:/Users/Raman/goal_tracker_final_project/goal-tracker-instance2-key.pem/goal-tracker-instance2-key.pem ec2-user@172.31.42.242 "docker load -i goal_tracker_final_project_img.tar"
+  # post_build:
+  #   commands:
+  #     - echo "Saving Docker image locally..."
+  #     - docker save -o goal_tracker_final_project_img.tar goal_tracker_final_project_img
+  #     - echo "Copying Docker image to EC2 instance..."
+  #     - scp -i /goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ec2-user@172.31.42.242:~/
+  #     - echo "Connecting to EC2 instance and loading Docker image..."
+  #     - ssh -i C:/Users/Raman/goal_tracker_final_project/goal-tracker-instance2-key.pem/goal-tracker-instance2-key.pem ec2-user@172.31.42.242 "docker load -i goal_tracker_final_project_img.tar"
 
 artifacts:
   files: imagedefinitions.json
