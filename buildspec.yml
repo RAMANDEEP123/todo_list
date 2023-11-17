@@ -22,4 +22,6 @@ phases:
       - ssh -i goal-tracker-instance2-key.pem ubuntu@3.81.67.114 "docker load -i goal_tracker_final_project_img.tar"
 
 artifacts:
-  files: goal_tracker_final_project_img.tar
+  files: 
+      - /**/*
+  # goal_tracker_final_project_img.tar
