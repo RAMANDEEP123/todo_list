@@ -38,8 +38,8 @@ WORKDIR /app
 ENV MIX_ENV=dev
 
 # Create and migrate the database
-RUN mix ecto.create && \
-    mix ecto.migrate
+# RUN mix ecto.create && \
+#     mix ecto.migrate
 
 # Build the Phoenix application
 RUN mix phx.digest
