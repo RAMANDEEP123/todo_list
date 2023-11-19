@@ -15,12 +15,12 @@ export function TaskForm({setTasks, goalId}) {
         };
 
         const responseCreate = await fetch(
-            `http://localhost:4000/api/tasks`,
+            `http://75.101.245.79:4000/api/tasks`,
             requestOptions
         );
 
         const response = await fetch(
-            "http://localhost:4000/api/tasks"
+            "http://75.101.245.79:4000/api/tasks"
             );
         const responseJson = await response.json();
 
