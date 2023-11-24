@@ -17,9 +17,9 @@ phases:
       - docker save -o goal_tracker_final_project_img.tar goal_tracker_final_project_img
       - chmod 400 goal-tracker-instance2-key.pem
       - echo "Copying Docker image to EC2 instance..."
-      - scp -v -o StrictHostKeyChecking=no -i goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ubuntu@75.101.245.79:~/
+      - scp -v -o StrictHostKeyChecking=no -i goal-tracker-instance2-key.pem goal_tracker_final_project_img.tar ubuntu@54.235.58.91:~/
       - echo "Connecting to EC2 instance and loading Docker image..."
-      - ssh -i goal-tracker-instance2-key.pem ubuntu@75.101.245.79 "docker load -i goal_tracker_final_project_img.tar"
+      - ssh -i goal-tracker-instance2-key.pem ubuntu@54.235.58.91 "docker load -i goal_tracker_final_project_img.tar"
 
 artifacts:
   files: 
