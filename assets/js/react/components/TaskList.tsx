@@ -7,7 +7,7 @@ export  function TaskList({tasks, setTasks, goalId}) {
     useEffect(() => {
       const getTaskList = async () => {
         const response = await fetch(
-          `http://54.235.58.91:4000/api/goal/tasks/${goalId.toString()}`
+          `http://34.203.196.90:4000/api/goal/tasks/${goalId.toString()}`
         );
         const responseJson = await response.json();
         console.log(responseJson);
@@ -25,12 +25,12 @@ export  function TaskList({tasks, setTasks, goalId}) {
         };
 
         const responseUpdate = await fetch(
-            `http://54.235.58.91:4000/api/tasks/${id}`,
+            `http://34.203.196.90:4000/api/tasks/${id}`,
             requestOptions
         );
 
         const response = await fetch(
-            "http://54.235.58.91:4000/api/tasks"
+            "http://34.203.196.90:4000/api/tasks"
           );
         const responseJson = await response.json();
         setTasks(responseJson);

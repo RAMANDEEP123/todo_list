@@ -7,7 +7,7 @@ export  function GoalList({goals, setGoals}) {
     useEffect(() => {
       const getGoalsList = async () => {
         const response = await fetch(
-          "http://54.235.58.91:4000/api/goals", {
+          "http://34.203.196.90:4000/api/goals", {
             method: "GET",
             headers: {
               "Content-Type": "application/json"
