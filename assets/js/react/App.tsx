@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { GoalList } from "./components/GoalList";
 import { GoalForm } from "./components/GoalForm";
-
+// import '/components/common.css';
 interface AppProps {
   name: string;
 }

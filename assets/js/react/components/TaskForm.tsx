@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import './common.css';
 export function TaskForm({setTasks, goalId}) {
     const [input, setInput] = useState(typeof string);
     

@@ -33,6 +33,10 @@ defmodule ReactTodoListWeb.Api.TaskView do
     %{data: render_one(task, TaskView, "task.json")}
   end
 
+  def render("upload_successful.json", %{file: _file}) do
+    %{}
+  end
+
   def render("show_goal.json", %{goal: goal}) do
     %{
       id: goal.id,

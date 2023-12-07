@@ -20,7 +20,7 @@ defmodule ReactTodoList.MixProject do
   def application do
     [
       mod: {ReactTodoList.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_aws]
     ]
   end
 
@@ -50,7 +50,12 @@ defmodule ReactTodoList.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:poison, "~> 4.0"},
-      {:cors_plug, "~> 2.0"}
+      {:cors_plug, "~> 2.0"},
+      {:ex_aws, "~> 2.0"},
+      {:httpoison, "~> 1.8"},
+      {:hackney, "~> 1.17"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:sweet_xml, "~> 0.6"}
       # {:httpotion, "~> 3.0"}
     ]
   end

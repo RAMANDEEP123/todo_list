@@ -1,5 +1,5 @@
 import React from "react";
-
+import './common.css';
 interface TaskItemInteface {
     id: number;
     goal_id: string

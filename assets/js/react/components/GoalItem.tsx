@@ -2,7 +2,8 @@ import React from "react";
 import { TaskList } from './TaskList';
 import { TaskForm } from './TaskForm';
 import { useState, useEffect } from "react";
-
+import FileUpload from './FileUpload';
+import './common.css';
 interface GoalItemInteface {
     id: number;
     title: string;
@@ -32,11 +33,11 @@ export function GoalItem({ id, title, description}: GoalItemInteface) {
         <div className="goal-item">
             <div className="goalTitle">Title: {title}</div>
             <div className="goalDesc">Description: {description}</div>
-            <div><button  className="button1" onClick={showAddTasksView()}> 
+            <div className="button-container"><button  className="button1" onClick={showAddTasksView()}> 
                     Add Task
-            </button><button  className="button1">
-                    Upload Documents
-            </button></div>
+            </button><div>
+              <FileUpload goalId={id}/>
+            </div></div>
             <div className="tasks">
                 <TaskList tasks={tasks} setTasks={setTasks} goalId={id}/>
             </div>

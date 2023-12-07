@@ -1,7 +1,10 @@
+// GoalList.jsx
+
+import React, { useState, useEffect } from "react";
 import { GoalItem } from "./GoalItem";
-import React from "react";
-import { useState, useEffect } from "react";
 import { TaskItem } from "./TaskItem";
+import "./GoalList.css"; // Import your updated CSS file
+import './common.css';
 
 export  function GoalList({goals, setGoals}) {
     useEffect(() => {
@@ -28,12 +31,14 @@ export  function GoalList({goals, setGoals}) {
     }, []);
 
     return (
-      <div>
-        {goals && goals.length > 0
-          ? goals.map(goal => {
-              return <GoalItem key={goal.id} {...goal} />
-            })
-          : "Loading..."}
+      <div className="goal-list-container">
+        {goals && goals.length > 0 ? (
+          goals.map((goal) => {
+            return <GoalItem key={goal.id} {...goal} />;
+          })
+        ) : (
+          <p className="loading">Loading...</p>
+        )}
       </div>
     );
 }

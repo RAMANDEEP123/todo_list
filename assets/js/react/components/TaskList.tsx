@@ -1,7 +1,7 @@
 import { TaskItem } from "./TaskItem";
 import React from "react";
 import { useState, useEffect } from "react";
-
+import './common.css';
 export  function TaskList({tasks, setTasks, goalId}) {
 
     useEffect(() => {

@@ -21,7 +21,9 @@ defmodule ReactTodoListWeb.Router do
 
   scope "/api", ReactTodoListWeb.Api, as: :api do
     pipe_through :api
-
+    
+    
+    post "/file_upload", TaskController, :upload
     get "/goals", TaskController, :get_goals
     post "/goals/create", TaskController, :create_goal
     get "/goal/tasks/:goal_id", TaskController, :get_tasks
@@ -34,6 +36,7 @@ defmodule ReactTodoListWeb.Router do
     get "/", PageController, :get_goals
     get "/goal/tasks/:goal_id", TaskController, :index
     resources "/tasks", TaskController
+    # post "/file_upload", TaskController, :upload
   end
   # Other scopes may use custom stacks.
   # scope "/api", ReactTodoListWeb.Api, as: :api do

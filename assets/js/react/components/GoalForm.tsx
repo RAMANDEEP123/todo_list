@@ -1,10 +1,10 @@
 import React from "react";
 import { GoalItem } from "./GoalItem";
 import { useState } from "react";
-
+import './common.css';
 export function GoalForm({setGoals}) {
-    const [inputTitle, setInputTitle] = useState(typeof string);
-    const [inputDescription, setInputDescription] = useState(typeof string);
+    const [inputTitle, setInputTitle] = useState('');
+    const [inputDescription, setInputDescription] = useState('');
 
     const addGoal = async (title: string, description: string) => {
         const requestOptions = {
