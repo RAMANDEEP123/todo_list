@@ -54,6 +54,15 @@ config :esbuild,
 #     {:versions, [:"tlsv1.2"]},
 #     {:cacertfile, "/path/to/ca-bundle.crt"}
 #   ]
+config :ex_aws,
+  access_key_id: "AKIARDYKLKQ7NP7SP3XV",
+  secret_access_key: "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",
+  region: "us-east-1",
+  s3: [
+    host: "s3.amazonaws.com",
+    scheme: "https://",
+    bucket: "goal-tracker-aws-bucket"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,

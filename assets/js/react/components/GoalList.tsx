@@ -1,38 +1,40 @@
+// GoalList.jsx
+
+import React, { useState, useEffect } from "react";
 import { GoalItem } from "./GoalItem";
-import React from "react";
-import { useState, useEffect } from "react";
 import { TaskItem } from "./TaskItem";
+import "./GoalList.css"; // Import your updated CSS file
+import './common.css';
+export function GoalList({ goals, setGoals }) {
+  useEffect(() => {
+    const getGoalsList = async () => {
+      const response = await fetch("http://localhost:4000/api/goals", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const responseJson = await response.json();
+      console.log(responseJson);
+      console.log(goals?.data?.length);
+      setGoals(responseJson);
+    };
+    getGoalsList();
+  }, []);
 
-export  function GoalList({goals, setGoals}) {
-    useEffect(() => {
-      const getGoalsList = async () => {
-        const response = await fetch(
-          "http://localhost:4000/api/goals", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            mode: 'no-cors'
-          }
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const responseJson = await response.json();
-        console.log(responseJson);
-        console.log(goals?.data?.length);
-        setGoals(responseJson);
-      };
-      getGoalsList();
-    }, []);
-
-    return (
-      <div>
-        {goals && goals.length > 0
-          ? goals.map(goal => {
-              return <GoalItem key={goal.id} {...goal} />
-            })
-          : "Loading..."}
-      </div>
-    );
+  return (
+    <div className="goal-list-container">
+      {goals && goals.length > 0 ? (
+        goals.map((goal) => {
+          return <GoalItem key={goal.id} {...goal} />;
+        })
+      ) : (
+        <p className="loading">Loading...</p>
+      )}
+    </div>
+  );
 }

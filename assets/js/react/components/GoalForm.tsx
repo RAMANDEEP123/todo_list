@@ -1,7 +1,7 @@
 import React from "react";
 import { GoalItem } from "./GoalItem";
 import { useState } from "react";
-
+import './common.css';
 export function GoalForm({setGoals}) {
     const [inputTitle, setInputTitle] = useState(typeof string);
     const [inputDescription, setInputDescription] = useState(typeof string);

@@ -1,33 +1,39 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import './common.css';
+const FileUpload = ({ goalId }) => {
+  const [selectedFileName, setSelectedFileName] = useState('');
 
-const FileUpload = () => {
-  const onDrop = useCallback((acceptedFiles) => {
-    // Assuming you have a function to handle file upload in your service
-    // uploadFileToServer(acceptedFiles[0]);
-    console.log(acceptedFiles[0]);
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({task: {description: description, completed: false, goal_id: goalId.toString()}})
-    // };
+  const onDrop = useCallback(async (acceptedFiles) => {
+    const formData = new FormData();
+    formData.append('file', acceptedFiles[0]);
+    setSelectedFileName(acceptedFiles[0].name);
 
-    // const responseCreate = await fetch(
-    //     `http://localhost:4000/api/file_upload`,
-    //     requestOptions
-    // );
+    const response = await fetch('http://localhost:4000/api/file_upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      console.log('File uploaded successfully');
+    } else {
+      console.error('File upload failed');
+    }
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: ['image/*', 'application/pdf', '.doc', '.docx'], // Specify the accepted file types, e.g., 'image/*' for images
-    multiple: false,    // Allow only one file to be dropped at a time
+    accept: ['image/*', 'application/pdf', '.doc', '.docx'],
+    multiple: false,
   });
 
   return (
-    <div {...getRootProps()}>
+    <div className="file-upload-container" {...getRootProps()}>
       <input {...getInputProps()} />
-      <p>Drag & drop a file here, or click to select a file</p>
+      <button>
+        Upload File
+      </button>
+      {selectedFileName && <p className="selected-file">Selected File: {selectedFileName}</p>}
     </div>
   );
 };

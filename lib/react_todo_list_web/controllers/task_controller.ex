@@ -73,4 +73,18 @@ defmodule ReactTodoListWeb.TaskController do
     |> put_flash(:info, "Task deleted successfully.")
     |> redirect(to: Routes.task_path(conn, :index))
   end
+
+  def upload(conn, params) do
+    # {_filename, _content_type, _file_content} = extract_upload_info(upload_params)
+
+    # Your file upload logic goes here
+
+    conn
+    |> put_status(:ok)
+    |> render("upload_successful.json", %{message: "File uploaded successfully"})
+  end
+
+  # defp extract_upload_info(%Plug.Upload{path: path, content_type: content_type, filename: filename}) do
+  #   {filename, content_type, File.read!(path)}
+  # end
 end

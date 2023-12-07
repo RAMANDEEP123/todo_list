@@ -1,0 +1,122 @@
+/* styles.css */
+
+/* Common Styles */
+body {
+    background-color: #cbb9b9;
+    font-family: Arial, sans-serif;
+  }
+.button {
+    /* padding: 10px 15px; */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* GoalList Styles */
+  
+  .goal-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .loading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 20px;
+  }
+  
+  /* Primary Button Style (Add Goal) */
+  .button-primary {
+    background-color: #28a745;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  /* Secondary Button Style (Add Task) */
+  .button-secondary {
+    background-color: #414646;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .selected-file {
+    margin-top: 10px;
+    color: #007bff;
+  }
+  
+  /* GoalItem Styles */
+  
+  .goal-item {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  
+  .goalTitle {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .goalDesc {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .button1 {
+    /* padding: 10px 15px; */
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  /* TaskList Styles */
+  
+  .task-list-container {
+    margin-top: 20px;
+  }
+  
+  /* TaskItem Styles */
+  
+  .task-item {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .line-through {
+    text-decoration: line-through;
+  }
+  
+  .task-actions {
+    margin-top: 10px;
+  }
+  
+  /* FileUpload Styles */
+  
+  .file-upload-container {
+    margin-top: 20px;
+  }
+  
+  .upload-button {
+    /* padding: 10px 15px; */
+    /* margin-top: 10px; */
+    cursor: pointer;
+    background-color: #ffa600;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center; /* Align buttons vertically center */
+    margin-top: 10px; /* Adjust margin as needed */
+  }
+  
+  /* Add more styles as needed */
+  
+  
