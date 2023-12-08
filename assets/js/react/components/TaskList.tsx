@@ -38,6 +38,7 @@ export  function TaskList({tasks, setTasks, goalId}) {
 
     return (
     <>
+    <table className="task-item">
         {tasks?.length > 0 ? (
             tasks.map((task) => <TaskItem completeItem={completeItem} key={task.id} {...task} />)
         ) : (
@@ -45,6 +46,7 @@ export  function TaskList({tasks, setTasks, goalId}) {
             <h3>Tasks are loading ...</h3>
         </div>
         )}
+    </table>
     </>
     );
 }
