@@ -1,10 +1,16 @@
 version: 0.2
 
+env:
+  variables:
+    DOCKER_LOGIN: "uppal5127"
+    DOCKER_PASSWORD: "raman1234#"
+
 phases:
   pre_build:
     commands:
       - apt-get update
       - apt-get install -y nodejs npm
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
 
   build:
     commands:
@@ -24,9 +30,3 @@ phases:
 artifacts:
   files: 
     - '**/*'
-
-# New section for Docker authentication
-registry-credentials:
-  files: 
-    - 'dockercfg.json'
-
