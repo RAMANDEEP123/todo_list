@@ -9,7 +9,7 @@ const FileUpload = ({ goalId }) => {
     formData.append('file', acceptedFiles[0]);
     setSelectedFileName(acceptedFiles[0].name);
 
-    const response = await fetch('http://34.203.196.90:4000/api/file_upload', {
+    const response = await fetch('http://54.172.232.89:4000/api/file_upload', {
       method: 'POST',
       body: formData,
     });
