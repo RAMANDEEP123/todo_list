@@ -23,5 +23,10 @@ phases:
 
 artifacts:
   files: 
-      - '**/*'
-  # goal_tracker_final_project_img.tar
+    - '**/*'
+
+# New section for Docker authentication
+registry-credentials:
+  files: 
+    - 'dockercfg.json'
+
