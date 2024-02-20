@@ -1,7 +1,6 @@
 defmodule ReactTodoListWeb.Api.TaskView do
   use ReactTodoListWeb, :view
   alias ReactTodoListWeb.Api.TaskView
-  # alias ReactTodoListWeb.Api.GoalView
 
   def render("index.json", %{tasks: tasks}) do
     %{data: render_many(tasks, TaskView, "task.json")}
@@ -12,19 +11,16 @@ defmodule ReactTodoListWeb.Api.TaskView do
       %{
         id: task.id,
         description: task.description,
-        completed: task.completed,
-        goal_id: task.goal_id
+        user_id: task.user_id
       }
     end)
   end
 
-  def render("goals.json", %{goals: goals}) do
-    # %{data: render_many(goals, TaskView, "goal.json")}
-    Enum.map(goals, fn goal ->
+  def render("users.json", %{users: users}) do
+    Enum.map(users, fn user ->
       %{
-        id: goal.id,
-        title: goal.title,
-        description: goal.description
+        id: user.id,
+        title: user.name,
       }
     end)
   end
@@ -37,11 +33,10 @@ defmodule ReactTodoListWeb.Api.TaskView do
     %{}
   end
 
-  def render("show_goal.json", %{goal: goal}) do
+  def render("show_user.json", %{user: user}) do
     %{
-      id: goal.id,
-      title: goal.title,
-      description: goal.description
+      id: user.id,
+      title: user.name
     }
   end
 
@@ -49,16 +44,15 @@ defmodule ReactTodoListWeb.Api.TaskView do
     %{
       id: task.id,
       description: task.description,
-      completed: task.completed,
-      goal_id: task.goal_id
+      user_id: task.user_id
     }
   end
 
-  def render("goal.json", %{goal: goal}) do
+  def render("user.json", %{user: user}) do
     %{
-      id: goal.id,
-      title: goal.title,
-      description: goal.description
+      id: user.id,
+      title: user.title,
+      description: user.description
     }
   end
 end

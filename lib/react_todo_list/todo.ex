@@ -7,7 +7,7 @@ defmodule ReactTodoList.Todo do
   alias ReactTodoList.Repo
 
   alias ReactTodoList.Todo.Task
-  alias ReactTodoList.Todo.Goal
+  alias ReactTodoList.Todo.User
  
   @doc """
   Returns the list of tasks.
@@ -17,25 +17,25 @@ defmodule ReactTodoList.Todo do
   end
 
   @doc """
-  Returns the list of tasks by goal_id.
+  Returns the list of tasks by user_id.
   """
-  def list_tasks(goal_id) do
-    from(task in Task, where: task.goal_id == ^goal_id) |> Repo.all()
+  def list_tasks(user_id) do
+    from(task in Task, where: task.user_id == ^user_id) |> Repo.all()
   end
 
   @doc """
-  Returns the list of goals.
+  Returns the list of users.
   """
-  def list_goals do
-    Repo.all(Goal)
+  def list_users do
+    Repo.all(User)
   end
 
   @doc """
-  Creates a Goal.
+  Creates a User.
   """
-  def create_goal(attrs \\ %{}) do
-    %Goal{}
-    |> Goal.changeset(attrs)
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -56,7 +56,7 @@ defmodule ReactTodoList.Todo do
   def create_task(attrs \\ %{}) do
     max_id = find_max_task_id()
     %Task{}
-    |> Task.changeset(%{id: max_id+1, description: attrs.description, completed: attrs.completed, goal_id: attrs.goal_id})
+    |> Task.changeset(%{id: max_id+1, description: attrs.description, user_id: attrs.user_id})
     |> Repo.insert()
   end
 

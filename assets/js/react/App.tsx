@@ -1,40 +1,36 @@
 import React, { useState } from "react";
-import { GoalList } from "./components/GoalList";
-import { GoalForm } from "./components/GoalForm";
+import { UserList } from "./components/UserList";
+import { UserForm } from "./components/UserForm";
 
 interface AppProps {
   name: string;
 }
 
 const App: React.FC<AppProps> = (props: AppProps) => {
-  const [goals, setGoals] = useState({});
-  const [showManageGoals, setShowManageGoals] = useState(false);
-  const [showAddGoals, setShowAddGoals] = useState(false);
+  const [users, setUsers] = useState({});
+  const [showManageUsers, setShowManageUsers] = useState(false);
+  const [showAddUsers, setShowAddUsers] = useState(false);
 
-  const showManageGoalsView = () => setShowManageGoals(true);
-  const showAddGoalView = () => setShowAddGoals(true);
+  const showManageUsersView = () => setShowManageUsers(true);
+  const showAddUserView = () => setShowAddUsers(true);
 
-  const rendeShowManageGoalsView = () => {
-    if (showManageGoals) {
+  const rendeShowManageUsersView = () => {
+    if (showManageUsers) {
       return (
         <div style={{ marginBottom: "1px", marginTop: "5px", padding: "1px" }}>
-          <h2 style={{ marginBottom: "1px", marginTop: "5px", padding: "1px" }}>𝐘𝐨𝐮𝐫 𝐆𝐨𝐚𝐥𝐬</h2>
-          <GoalList goals={goals} setGoals={setGoals} />
+          <h2 style={{ marginBottom: "1px", marginTop: "5px", padding: "1px" }}>Users</h2>
+          <UserList users={users} setUsers={setUsers} />
         </div>
-        // <div  style={{ marginBottom: "1px", marginTop: "5px", padding: "1px" }}>
-        // <h2>𝐘𝐨𝐮𝐫 𝐆𝐨𝐚𝐥𝐬</h2>
-        // <GoalList goals={goals} setGoals={setGoals} />
-        // </div>
       );
     }
     return null;
   };
 
-  const rendeShowAddGoalsView = () => {
-    if (showAddGoals) {
+  const rendeShowAddUsersView = () => {
+    if (showAddUsers) {
       return (
         <div>
-          <GoalForm setGoals={setGoals} />
+          <UserForm setUsers={setUsers} />
         </div>
       );
     }
@@ -47,15 +43,15 @@ const App: React.FC<AppProps> = (props: AppProps) => {
 
       {/* Main Content */}
       <div className="title">
-        <button className="AddGoal" onClick={showAddGoalView} >
-          Add a Goal
+        <button className="AddUser" onClick={showAddUserView} >
+          Add a User
         </button>
         <span>   </span>
-        <button className="ManageGoal" onClick={showManageGoalsView}>
-          Manage Goals
+        <button className="ManageUser" onClick={showManageUsersView}>
+          Manage Users
         </button>
-        {rendeShowManageGoalsView()}
-        {rendeShowAddGoalsView()}
+        {rendeShowManageUsersView()}
+        {rendeShowAddUsersView()}
       </div>
 
       {/* Footer */}

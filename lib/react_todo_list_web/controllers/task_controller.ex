@@ -9,14 +9,14 @@ defmodule ReactTodoListWeb.TaskController do
     render(conn, "index.html", tasks: tasks)
   end
 
-  def get_tasks(conn, %{"goal_id" => goal_id}) do
-    tasks = Todo.list_tasks(goal_id)
+  def get_tasks(conn, %{"user_id" => user_id}) do
+    tasks = Todo.list_tasks(user_id)
     render(conn, "tasks.html", tasks: tasks)
   end
   
-  def get_goals(conn, _params) do
+  def get_users(conn, _params) do
     IO.puts("*********************************8")
-    goals = Todo.list_goals()
+    goals = Todo.list_users()
     IO.inspect goals
     render(conn, "index.html", goals: goals)
   end
@@ -75,16 +75,9 @@ defmodule ReactTodoListWeb.TaskController do
   end
 
   def upload(conn, params) do
-    # {_filename, _content_type, _file_content} = extract_upload_info(upload_params)
-
-    # Your file upload logic goes here
-
     conn
     |> put_status(:ok)
     |> render("upload_successful.json", %{message: "File uploaded successfully"})
   end
 
-  # defp extract_upload_info(%Plug.Upload{path: path, content_type: content_type, filename: filename}) do
-  #   {filename, content_type, File.read!(path)}
-  # end
 end

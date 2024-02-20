@@ -8,7 +8,7 @@ defmodule ReactTodoList.TodoTest do
 
     import ReactTodoList.TodoFixtures
 
-    @invalid_attrs %{completed: nil, description: nil}
+    @invalid_attrs %{ description: nil}
 
     test "list_tasks/0 returns all tasks" do
       task = task_fixture()
@@ -21,10 +21,9 @@ defmodule ReactTodoList.TodoTest do
     end
 
     test "create_task/1 with valid data creates a task" do
-      valid_attrs = %{completed: true, description: "some description"}
+      valid_attrs = %{ description: "some description"}
 
       assert {:ok, %Task{} = task} = Todo.create_task(valid_attrs)
-      assert task.completed == true
       assert task.description == "some description"
     end
 
@@ -34,10 +33,9 @@ defmodule ReactTodoList.TodoTest do
 
     test "update_task/2 with valid data updates the task" do
       task = task_fixture()
-      update_attrs = %{completed: false, description: "some updated description"}
+      update_attrs = %{ description: "some updated description"}
 
       assert {:ok, %Task{} = task} = Todo.update_task(task, update_attrs)
-      assert task.completed == false
       assert task.description == "some updated description"
     end
 

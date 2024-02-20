@@ -6,14 +6,12 @@ defmodule ReactTodoListWeb.Api.TaskControllerTest do
   alias ReactTodoList.Todo.Task
 
   @create_attrs %{
-    completed: true,
     description: "some description"
   }
   @update_attrs %{
-    completed: false,
     description: "some updated description"
   }
-  @invalid_attrs %{completed: nil, description: nil}
+  @invalid_attrs %{ description: nil}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -35,7 +33,6 @@ defmodule ReactTodoListWeb.Api.TaskControllerTest do
 
       assert %{
                "id" => ^id,
-               "completed" => true,
                "description" => "some description"
              } = json_response(conn, 200)["data"]
     end
@@ -57,7 +54,6 @@ defmodule ReactTodoListWeb.Api.TaskControllerTest do
 
       assert %{
                "id" => ^id,
-               "completed" => false,
                "description" => "some updated description"
              } = json_response(conn, 200)["data"]
     end

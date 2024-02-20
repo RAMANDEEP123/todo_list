@@ -11,7 +11,6 @@ defmodule ReactTodoList.TodoFixtures do
     {:ok, task} =
       attrs
       |> Enum.into(%{
-        completed: true,
         description: "some description"
       })
       |> ReactTodoList.Todo.create_task()

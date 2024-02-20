@@ -1,3 +1,0 @@
-defmodule ReactTodoListWeb.GoalView do
-  use ReactTodoListWeb, :view
-end

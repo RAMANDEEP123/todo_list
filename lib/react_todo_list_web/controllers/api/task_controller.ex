@@ -4,9 +4,9 @@ defmodule ReactTodoListWeb.Api.TaskController do
 
   alias ReactTodoList.Todo
   alias ReactTodoList.Todo.Task
-  alias ReactTodoList.Todo.Goal
+  alias ReactTodoList.Todo.User
 
-  @bucket "goal-tracker-aws-bucket"
+  @bucket "user-tracker-aws-bucket"
 
   action_fallback ReactTodoListWeb.FallbackController
 
@@ -15,22 +15,22 @@ defmodule ReactTodoListWeb.Api.TaskController do
     render(conn, "index.json", tasks: tasks)
   end
 
-  def get_tasks(conn, %{"goal_id" => goal_id}) do
-    tasks = Todo.list_tasks(goal_id)
+  def get_tasks(conn, %{"user_id" => user_id}) do
+    tasks = Todo.list_tasks(user_id)
     render(conn, "tasks.json", tasks: tasks)
   end
 
-  def get_goals(conn, _params) do
-    goals = Todo.list_goals()
-    render(conn, "goals.json", goals: goals)
+  def get_users(conn, _params) do
+    users = Todo.list_users()
+    render(conn, "users.json", users: users)
   end
   
-  def create_goal(conn, %{"goal" => task_params}) do
-    with {:ok, %Goal{} = goal} <- Todo.create_goal(task_params) do
+  def create_user(conn, %{"user" => task_params}) do
+    with {:ok, %User{} = user} <- Todo.create_user(task_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.api_task_path(conn, :show, goal))
-      |> render("show_goal.json", goal: goal)
+      |> put_resp_header("location", Routes.api_task_path(conn, :show, user))
+      |> render("show_user.json", user: user)
     end
   end
 

@@ -5,7 +5,6 @@ defmodule ReactTodoList.Todo.User do
     schema "user" do
       field :name, :string
       field :email, :string
-      field :password, :string
   
       timestamps()
     end
@@ -13,7 +12,7 @@ defmodule ReactTodoList.Todo.User do
     @doc false
     def changeset(task, attrs) do
       task
-      |> cast(attrs, [:name, :email, :password])
+      |> cast(attrs, [:name, :email])
       |> unique_constraint(:id, name: :PRIMARY)
     end
   end

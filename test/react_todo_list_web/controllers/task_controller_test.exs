@@ -3,9 +3,9 @@ defmodule ReactTodoListWeb.TaskControllerTest do
 
   import ReactTodoList.TodoFixtures
 
-  @create_attrs %{completed: true, description: "some description"}
-  @update_attrs %{completed: false, description: "some updated description"}
-  @invalid_attrs %{completed: nil, description: nil}
+  @create_attrs %{description: "some description"}
+  @update_attrs %{description: "some updated description"}
+  @invalid_attrs %{ description: nil}
 
   describe "index" do
     test "lists all tasks", %{conn: conn} do
