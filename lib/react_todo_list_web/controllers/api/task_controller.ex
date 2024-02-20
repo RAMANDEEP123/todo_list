@@ -1,6 +1,5 @@
 defmodule ReactTodoListWeb.Api.TaskController do
   use ReactTodoListWeb, :controller
-  import ExAws.S3
 
   alias ReactTodoList.Todo
   alias ReactTodoList.Todo.Task
@@ -33,7 +32,8 @@ defmodule ReactTodoListWeb.Api.TaskController do
   end
 
   def create(conn, %{"task" => task_params}) do
-    with {:ok, %Task{} = task} <- Todo.create_task(task_params) do
+    params = %{description: task_params["description"], user_id: String.to_integer(task_params["user_id"])}
+    with {:ok, %Task{} = task} <- Todo.create_task(params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.api_task_path(conn, :show, task))

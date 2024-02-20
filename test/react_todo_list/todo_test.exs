@@ -5,6 +5,7 @@ defmodule ReactTodoList.TodoTest do
 
   describe "tasks" do
     alias ReactTodoList.Todo.Task
+    alias ReactTodoList.Todo.User
 
     import ReactTodoList.TodoFixtures
 
@@ -21,7 +22,8 @@ defmodule ReactTodoList.TodoTest do
     end
 
     test "create_task/1 with valid data creates a task" do
-      valid_attrs = %{ description: "some description"}
+      {:ok, %User{id: user_id}} = Todo.create_user(%{"name" => "Raman", "email" => "raman@gmail.com"})
+      valid_attrs = %{"description" => "some description", "user_id" => user_id}
 
       assert {:ok, %Task{} = task} = Todo.create_task(valid_attrs)
       assert task.description == "some description"

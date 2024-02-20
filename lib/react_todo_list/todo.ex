@@ -54,9 +54,9 @@ defmodule ReactTodoList.Todo do
   Creates a task.
   """
   def create_task(attrs \\ %{}) do
-    # max_id = find_max_task_id() + 1
+    IO.inspect(attrs)
     %Task{}
-    |> Task.changeset(%{description: attrs["description"], user_id: String.to_integer(attrs["user_id"])})
+    |> Task.changeset(attrs)
     |> Repo.insert()
   end
 
