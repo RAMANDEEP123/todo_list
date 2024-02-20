@@ -6,14 +6,15 @@ interface TaskItemInteface {
     description: string;
     user_id: string;
     updateItem: (id: number, description: string) => void;
+    deleteItem: (id: number) => void;
   }
   
-export function TaskItem({ id, description, updateItem}: TaskItemInteface) {
+export function TaskItem({ id, description, updateItem, deleteItem}: TaskItemInteface) {
     const [inputDescription, setInputDescription] = useState(description);
     const [updateClicked, setUpdateClicked] = useState(false);
-    // const handleDelete = async (id) => {
-    //     deleteItem(id)
-    // }
+    const handleDelete = async (id) => {
+        deleteItem(id)
+    }
 
     const handleUpdate = async (id) => {
         setUpdateClicked(false);
@@ -38,15 +39,12 @@ export function TaskItem({ id, description, updateItem}: TaskItemInteface) {
                 <span>
                   <span>{description}</span>
                  <div className="task-actions">
-                {/* <button onClick={() => handleUpdate(id)} className="button">
-                    Update
-                </button> */}
                  <button onClick={rendeUpdateTaskView} className="button">
                     Update
                 </button>
-                {/* <button onClick={() => handleDelete(id)} className="button">
+                <button onClick={() => handleDelete(id)} className="button">
                     Remove
-                </button> */}
+                </button>
             </div>
                 </span>
                 

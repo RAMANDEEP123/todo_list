@@ -25,7 +25,7 @@ export function UserItem({ id, title }: UserItemInteface) {
 
   return (
     <div className="user-item">
-      <div className="userTitle">Title: {title}</div>
+      <div className="userTitle">Name: {title}</div>
       <div style={buttonContainerStyle}>
         <div>
           <button style={button1Style} onClick={showAddTasksView}>

@@ -28,6 +28,7 @@ defmodule ReactTodoListWeb.Router do
     post "/users/create", TaskController, :create_user
     get "/user/tasks/:user_id", TaskController, :get_tasks
     put "/tasks/update", TaskController, :update
+    delete "/tasks/delete/:id", TaskController, :delete
     resources "/tasks", TaskController
   end
 
