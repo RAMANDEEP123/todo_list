@@ -57,10 +57,10 @@ const App: React.FC<AppProps> = (props: AppProps) => {
               Add a User
             </button>
             <button className="ManageUser" onClick={showManageUsersView}>
-              Manage Users
+              Manage Tasks
             </button>
             <button className="ManageUser" onClick={showManageUsersView}>
-              Manage Users
+              Manage Tasks
             </button>
             {rendeShowManageUsersView()}
             {rendeShowAddUsersView()}

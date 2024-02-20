@@ -3,12 +3,13 @@ import { useState } from "react";
 import './common.css';
 export function UserForm({setUsers}) {
     const [inputTitle, setInputTitle] = useState('');
+    const [inputEmail, setInputEmail] = useState('');
 
-    const addUser = async (title: string) => {
+    const addUser = async (name: string, email: string) => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({user: {title: title}})
+            body: JSON.stringify({user: {name: name, email: email}})
         };
 
         const responseCreate = await fetch(
@@ -27,8 +28,9 @@ export function UserForm({setUsers}) {
     return (
     <>
         <div className="task-form-container">
-            <input value={inputTitle} onChange={(e) => setInputTitle(e.target.value)} type="text" placeholder="User Name" />
-            <button onClick={() => addUser(inputTitle)} className="button">
+            <input value={inputTitle} onChange={(e) => setInputTitle(e.target.value)} type="text" placeholder="Enter user name..." />
+            <input value={inputEmail} onChange={(e) => setInputEmail(e.target.value)} type="text" placeholder="Enter email address..." />
+            <button onClick={() => addUser(inputTitle, inputEmail)} className="button">
                 Add new User
             </button>
         </div>

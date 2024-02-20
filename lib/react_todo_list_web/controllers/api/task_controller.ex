@@ -26,6 +26,8 @@ defmodule ReactTodoListWeb.Api.TaskController do
   end
   
   def create_user(conn, %{"user" => task_params}) do
+    IO.inspect(task_params)
+    IO.puts("******************************************")
     with {:ok, %User{} = user} <- Todo.create_user(task_params) do
       conn
       |> put_status(:created)
@@ -35,6 +37,8 @@ defmodule ReactTodoListWeb.Api.TaskController do
   end
 
   def create(conn, %{"task" => task_params}) do
+    IO.inspect(task_params)
+    IO.puts("******************************************")
     with {:ok, %Task{} = task} <- Todo.create_task(task_params) do
       conn
       |> put_status(:created)

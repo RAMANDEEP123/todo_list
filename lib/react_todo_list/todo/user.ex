@@ -2,7 +2,7 @@ defmodule ReactTodoList.Todo.User do
     use Ecto.Schema
     import Ecto.Changeset
   
-    schema "user" do
+    schema "users" do
       field :name, :string
       field :email, :string
   

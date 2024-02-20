@@ -48,7 +48,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
         </button>
         <span>   </span>
         <button className="ManageUser" onClick={showManageUsersView}>
-          Manage Users
+          Manage Tasks
         </button>
         {rendeShowManageUsersView()}
         {rendeShowAddUsersView()}

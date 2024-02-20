@@ -15,15 +15,37 @@ export  function TaskList({tasks, setTasks, userId}) {
       };
       getTaskList();
     }, []);
+
+    const updateItem = async (id: number, description: string) => {
+      console.log(id);
+      console.log(description);
+
+      const requestOptions = {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({id: id, task: { id: id, description: description}})
+      };
+      const responseUpdate = await fetch(
+          `http://localhost:4000/api/tasks/update`,
+          requestOptions
+      );
+
+      const response = await fetch(
+          "http://localhost:4000/api/tasks"
+        );
+      const responseJson = await response.json();
+      setTasks(responseJson);
+    }
+
     return (
     <>
     <table className="task-item">
-        {tasks?.length > 0 ? (
-            tasks.map((task) => <TaskItem key={task.id} {...task} />)
-        ) : (
-        <div className="task-list-container">
-            <h3>Tasks are loading ...</h3>
-        </div>
+      {tasks?.length > 0 ? (
+              tasks.map((task) => <TaskItem updateItem={updateItem} key={task.id} {...task} />)
+          ) : (
+          <div className="task-list-container">
+              <h3>Tasks are loading ...</h3>
+          </div>
         )}
     </table>
     </>
