@@ -21,6 +21,7 @@ export  function UserList({ users, setUsers }) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const responseJson = await response.json();
+                console.log("user list initial users list");
                 console.log(responseJson);
                 setUsers(responseJson);
                 setLoading(false); 

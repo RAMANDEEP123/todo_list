@@ -16,12 +16,13 @@ export function TaskForm({setTasks, userId}) {
             requestOptions
         );
 
-        const response = await fetch(
-            "http://localhost:4000/api/tasks"
-            );
-        const responseJson = await response.json();
-
-        setTasks(responseJson);
+        const response = await fetch(`http://localhost:4000/api/user/tasks/${userId.toString()}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const responseJson = await response.json();
+            console.log(responseJson);
+            setTasks(responseJson);
     }
     
     return (

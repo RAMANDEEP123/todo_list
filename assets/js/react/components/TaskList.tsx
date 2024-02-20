@@ -37,12 +37,14 @@ export function TaskList({ tasks, setTasks, userId }) {
                 throw new Error(`HTTP error! Status: ${responseUpdate.status}`);
             }
 
-            const response = await fetch("http://localhost:4000/api/tasks");
+            const response = await fetch(`http://localhost:4000/api/user/tasks/${userId.toString()}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const responseJson = await response.json();
+            console.log(responseJson);
             setTasks(responseJson);
+            setLoading(false); 
         } catch (error) {
             console.error('Error updating task:', error);
         }
@@ -59,12 +61,14 @@ export function TaskList({ tasks, setTasks, userId }) {
                 throw new Error(`HTTP error! Status: ${responseDelete.status}`);
             }
 
-            const response = await fetch("http://localhost:4000/api/tasks");
+            const response = await fetch(`http://localhost:4000/api/user/tasks/${userId.toString()}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const responseJson = await response.json();
+            console.log(responseJson);
             setTasks(responseJson);
+            setLoading(false); 
         } catch (error) {
             console.error('Error deleting task:', error);
         }

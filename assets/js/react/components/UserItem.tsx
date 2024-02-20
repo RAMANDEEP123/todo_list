@@ -12,7 +12,8 @@ export function UserItem({ id, title }: UserItemInteface) {
   const [showAddTasks, setShowAddTasks] = useState(false);
 
   const showAddTasksView = () => setShowAddTasks(true);
-
+  console.log("useritem tasks*****************8");
+  console.log(tasks);
   const rendeshowAddTasksView = () => {
     if (showAddTasks) {
       return (
